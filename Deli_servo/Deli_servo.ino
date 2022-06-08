@@ -5,8 +5,6 @@
 
 Servo servo;
 
-int angle = 0; // servo position in degrees
-
 void setup(){
   pinMode(ioPin, INPUT);
   servo.attach(servoPin);
