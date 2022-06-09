@@ -5,16 +5,24 @@
 
 Servo servo;
 
+int angle = 0;
+
 void setup(){
   pinMode(ioPin, INPUT);
   servo.attach(servoPin);
 }
 
 void loop() {
-  if (digitalRead(ioPin) == LOW){
-    servo.write(0);
+  if (digitalRead(ioPin) == HIGH){
+    // Reverse lock state!!!
+    if (angle == 0) {
+      angle = 100;
+    }
+    else {
+      angle = 0;
+    }
   }
-  else {
-    servo.write(100);
-  }
+
+  servo.write(angle);
+  delay(1000);
 }
