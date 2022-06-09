@@ -24,5 +24,5 @@ void loop() {
   }
 
   servo.write(angle);
-  delay(1000);
+  delay(2000);
 }
