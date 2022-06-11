@@ -13,16 +13,12 @@ void setup(){
 }
 
 void loop() {
-  if (digitalRead(ioPin) == HIGH){
-    // Reverse lock state!!!
-    if (angle == 0) {
-      angle = 100;
-    }
-    else {
-      angle = 0;
-    }
+  if (digitalRead(ioPin) == HIGH) {
+    // On delivery
+    servo.write(100);
   }
-
-  servo.write(angle);
-  delay(2000);
+  else {
+    // Waiting
+    servo.write(0);
+  }
 }
