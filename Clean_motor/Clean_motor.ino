@@ -2,7 +2,7 @@
 #define dirPin 5
 #define ioPin 7
 
-int suctionMotor = 0;
+int nSpeed = 0;
 
 void setup() {
   pinMode(pwmPin, OUTPUT);
@@ -14,14 +14,13 @@ void setup() {
 
 void loop() {
   if (digitalRead(ioPin) == HIGH) {
-    // Reverse suction motor state!!!
-    if (suctionMotor == 0) {
-      suctionMotor = 255;
-    }
-    else {
-      suctionMotor = 0;
-    }
+    nSpeed++;
+    if (nSpeed >= 200) nSpeed = 200;
+    analogWrite(pwmPin, nSpeed);
+    delay(20);
   }
-  analogWrite(pwmPin, suctionMotor);
-  delay(2000);
+  else {
+    nSpeed = 0;
+    analogWrite(pwmPin, nSpeed);
+  }
 }
